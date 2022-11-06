@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model MVCpractice.ViewModels.ItemVM
+<ul class="pagination-item">
+    @for (int i = 1; i <= Model.Pages; i++)
+    {
+        <li class="pagination-item">
+            @if (i == Model.CurrentPage)
+            {
+                <span>@i</span>
+            }
+            else
+            {
+                <a asp-action="Index" asp-route-page="@i"
+           asp-route-sortField="@Model.SortField"
+           asp-route-ascending="@Model.Ascending">
+                    @i
+                </a>
+            }
+        </li>
+    }
+</ul>
+

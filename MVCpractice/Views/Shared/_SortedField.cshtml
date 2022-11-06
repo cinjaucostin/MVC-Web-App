@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model MVCpractice.ViewModels.ItemVM
+
+@Html.DisplayName(Model.CurrentField)
+@if (Model.CurrentField == Model.SortField) 
+{
+    if(Model.Ascending)
+    {
+        <span>ASC</span>
+        <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=false>DESC</a>
+    }
+    else
+    {
+        <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=true>ASC</a>
+        <span>DESC</span>
+    }
+}
+else 
+{
+    <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=true>ASC</a>
+    <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=false>DESC</a>
+}
