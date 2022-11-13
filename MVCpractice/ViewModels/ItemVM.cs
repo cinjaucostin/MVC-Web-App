@@ -8,6 +8,7 @@
         public string SortField { get; set; }
         public bool Ascending { get; set; }
         public string CurrentField { get; set; }
+        public string FilterKey { get; set; }
 
     }
 }

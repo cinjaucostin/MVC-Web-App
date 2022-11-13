@@ -9,16 +9,16 @@
     if(Model.Ascending)
     {
         <span>ASC</span>
-        <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=false>DESC</a>
+        <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=false asp-route-filterKey="@Model.FilterKey">DESC</a>
     }
     else
     {
-        <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=true>ASC</a>
+        <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=true asp-route-filterKey="@Model.FilterKey">ASC</a>
         <span>DESC</span>
     }
 }
 else 
 {
-    <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=true>ASC</a>
-    <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=false>DESC</a>
+    <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=true asp-route-filterKey="@Model.FilterKey">ASC</a>
+    <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=false asp-route-filterKey="@Model.FilterKey">DESC</a>
 }

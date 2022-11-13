@@ -19,7 +19,7 @@ namespace MVCpractice
                 .ConfigureContainer<ContainerBuilder>(
                 builder =>
                 {
-                    builder.RegisterType<CRMContext>().As<CRMContext>().SingleInstance();
+                    builder.RegisterType<CRMContext>().As<CRMContext>().InstancePerDependency();
                 }    
             );
 

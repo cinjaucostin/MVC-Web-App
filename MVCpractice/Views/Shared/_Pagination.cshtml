@@ -13,8 +13,9 @@
             else
             {
                 <a asp-action="Index" asp-route-page="@i"
-           asp-route-sortField="@Model.SortField"
-           asp-route-ascending="@Model.Ascending">
+                                      asp-route-sortField="@Model.SortField"
+                                      asp-route-ascending="@Model.Ascending"
+                                      asp-route-filterKey="@Model.FilterKey">
                     @i
                 </a>
             }

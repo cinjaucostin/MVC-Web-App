@@ -23,19 +23,23 @@ namespace MVCpractice.Controllers
         }
 
         // GET: Customers
-        public IActionResult Index(int page = 1, string sortField = "", bool ascending = true)
+        public IActionResult Index(int page = 1, string sortField = "", bool ascending = true, string filterKey="")
         {
             CustomerIndexVM model = new CustomerIndexVM();
-
-            IQueryable<Customer> customers = db.Customers;
 
             model.CurrentPage = page;
             model.Ascending = ascending;
             model.SortField = sortField;
 
+            model.FilterKey = filterKey;
+
             model.CurrentField = model.SortField;
 
-            model.Records = db.Customers.Count();
+            IQueryable<Customer> customers = db.Customers;
+
+            customers = db.Customers.Where(c => c.FirstName.Contains(filterKey));
+
+            model.Records = customers.Count();
             model.Pages = (model.Records % perPage == 0) ?
                                             (model.Records / perPage) :
                                             (model.Records / perPage) + 1;
@@ -59,9 +63,7 @@ namespace MVCpractice.Controllers
                                             customers.OrderByDescending(c => c.Country);
                     break;
                 default:
-                    customers = db.Customers;
                     break;
-
             }
 
             model.Customers = customers.Skip((page - 1) * perPage).Take(perPage).ToList();

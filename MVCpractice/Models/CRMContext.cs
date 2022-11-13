@@ -18,6 +18,7 @@ namespace MVCpractice.Models
 
         public virtual DbSet<AvailableProduct> AvailableProducts { get; set; } = null!;
         public virtual DbSet<Customer> Customers { get; set; } = null!;
+        public virtual DbSet<Log4NetInfo> Log4NetInfos { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<OrderItem> OrderItems { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
@@ -64,6 +65,15 @@ namespace MVCpractice.Models
                 entity.Property(e => e.LastName).HasMaxLength(40);
 
                 entity.Property(e => e.Phone).HasMaxLength(20);
+            });
+
+            modelBuilder.Entity<Log4NetInfo>(entity =>
+            {
+                entity.ToTable("Log4NetInfo");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Info).HasMaxLength(500);
             });
 
             modelBuilder.Entity<Order>(entity =>

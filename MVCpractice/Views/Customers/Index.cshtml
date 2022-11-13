@@ -10,6 +10,19 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+@*
+<form asp-action="Index">
+    <label asp-for="FilterKey" class="control-label">Filter by First Name</label>
+    <input asp-for="FilterKey" class="form-control" />
+    <a asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending=true asp-route-filterKey="@Model.FilterKey">Search</a>
+</form>*@
+
+<form asp-controller="Customers" asp-action="Index" asp-route-sortField="@Model.CurrentField" asp-route-ascending="@Model.Ascending">
+    <p>
+        Title: <input type="text" name="filterKey" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 
 <p>
     Avem @Model.Records customers in @Model.Pages pagini.
